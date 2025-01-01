@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Server Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .content {
+            padding: 20px;
+        }
+        .feedback-form {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .feedback-form input[type="radio"] {
+            margin: 10px;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Server Feedback</h1>
+    </header>
+
+    <div class="content">
+        <div class="feedback-form">
+            <h2>Please Rate the Server</h2>
+            <form id="feedbackForm">
+                <p>How would you rate the server?</p>
+                <label for="good">Good</label>
+                <input type="radio" id="good" name="serverRating" value="Good" required><br>
+                <label for="bad">Bad</label>
+                <input type="radio" id="bad" name="serverRating" value="Bad" required><br><br>
+                
+                <label for="feedback">Additional Comments:</label><br>
+                <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea><br><br>
+
+                <button type="submit" class="submit-btn">Submit Feedback</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("feedbackForm").addEventListener("submit", function(event) {
+            event.preventDefault();  // Prevent the default form submission
+
+            // Get feedback values
+            const serverRating = document.querySelector('input[name="serverRating"]:checked').value;
+            const feedback = document.getElementById("feedback").value;
+
+            // Here, you can use JavaScript to process or store the feedback in a database.
+            console.log("Server Rating: " + serverRating);
+            console.log("Additional Feedback: " + feedback);
+
+            // Alert to confirm submission (can be removed later)
+            alert("Thank you for your feedback!");
+
+            // Optionally, reset the form after submission
+            document.getElementById("feedbackForm").reset();
+        });
+    </script>
+</body>
+</html>
+Explanation:
+HTML Structure: It includes a header, a feedback form with radio buttons for rating (Good/Bad), and a text area for additional comments.
+JavaScript: A script captures the form submission, prevents the page from reloading (using event.preventDefault()), and logs the feedback (good/bad) and additional comments.
+Styling: Th
