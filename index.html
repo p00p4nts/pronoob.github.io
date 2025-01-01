@@ -3,91 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Server Feedback</title>
+    <title>Stylish Webpage</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-        }
-        header {
-            background-color: #4CAF50;
+            background: linear-gradient(45deg, #4a90e2, #50e3c2);
             color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
             text-align: center;
-            padding: 20px 0;
-        }
-        .content {
             padding: 20px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
         }
-        .feedback-form {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        h1 {
+            font-size: 3em;
+            margin: 20px 0;
         }
-        .feedback-form input[type="radio"] {
-            margin: 10px;
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
         }
-        .submit-btn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
             border: none;
+            border-radius: 5px;
+            background-color: #ff3b3b;
+            color: white;
             cursor: pointer;
-            border-radius: 4px;
+            transition: background-color 0.3s ease;
         }
-        .submit-btn:hover {
-            background-color: #45a049;
+
+        button:hover {
+            background-color: #e60000;
+        }
+
+        .animated-text {
+            font-size: 1.5em;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .visible {
+            opacity: 1;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Server Feedback</h1>
-    </header>
 
-    <div class="content">
-        <div class="feedback-form">
-            <h2>Please Rate the Server</h2>
-            <form id="feedbackForm">
-                <p>How would you rate the server?</p>
-                <label for="good">Good</label>
-                <input type="radio" id="good" name="serverRating" value="Good" required><br>
-                <label for="bad">Bad</label>
-                <input type="radio" id="bad" name="serverRating" value="Bad" required><br><br>
-                
-                <label for="feedback">Additional Comments:</label><br>
-                <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea><br><br>
-
-                <button type="submit" class="submit-btn">Submit Feedback</button>
-            </form>
-        </div>
+    <div class="container">
+        <h1>hi</h1>
+        <p>Click the button below to reveal a surprise message.</p>
+        <button id="revealButton">Reveal Message</button>
+        <p class="animated-text" id="surpriseMessage">You unlocked the secret message!</p>
     </div>
 
     <script>
-        document.getElementById("feedbackForm").addEventListener("submit", function(event) {
-            event.preventDefault();  // Prevent the default form submission
+        // ES6 JavaScript for the button functionality
+        const revealButton = document.getElementById('revealButton');
+        const surpriseMessage = document.getElementById('surpriseMessage');
 
-            // Get feedback values
-            const serverRating = document.querySelector('input[name="serverRating"]:checked').value;
-            const feedback = document.getElementById("feedback").value;
-
-            // Here, you can use JavaScript to process or store the feedback in a database.
-            console.log("Server Rating: " + serverRating);
-            console.log("Additional Feedback: " + feedback);
-
-            // Alert to confirm submission (can be removed later)
-            alert("Thank you for your feedback!");
-
-            // Optionally, reset the form after submission
-            document.getElementById("feedbackForm").reset();
+        revealButton.addEventListener('click', () => {
+            surpriseMessage.classList.add('visible');
         });
     </script>
+
 </body>
 </html>
-Explanation:
-HTML Structure: It includes a header, a feedback form with radio buttons for rating (Good/Bad), and a text area for additional comments.
-JavaScript: A script captures the form submission, prevents the page from reloading (using event.preventDefault()), and logs the feedback (good/bad) and additional comments.
-Styling: Th
